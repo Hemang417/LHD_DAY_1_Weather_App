@@ -7,7 +7,7 @@ let iconfile;
 
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
-const proxy = "cors-anywhere.herokuapp.com/";
+const proxy = "https://cors-anywhere.herokuapp.com/";
 
 searchButton.addEventListener('click', (e)=>{
     e.preventDefault();
