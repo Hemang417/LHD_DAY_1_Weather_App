@@ -85,10 +85,10 @@ window.addEventListener("load", () => {
                     tempicon.src="./img/rain.png"
                 }
                 else if(id<700&&id>600){
-                    tempicon.src="./img/snow.png"
+                    tempicon.src="./img/snowman.png"
                 }
                 else if(id<700&&id>800){
-                    tempicon.src="./img/clouds.png"
+                    tempicon.src="./img/atmosphere.png"
                 }
                 else if(id==800){
                     tempicon.src="./img/sun.png"
