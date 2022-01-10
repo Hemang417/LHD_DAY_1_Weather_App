@@ -16,14 +16,14 @@ searchButton.addEventListener('click', (e)=>{
 });
 
 const getWeather = async(city)=>{
-    try{
+    
         const response = await fetch(`${proxy}api.openweathermap.org/data/2.5/weather?q=${city}&appid=354bd08c70d0732a3eeb5c0ca366af24`);
 
         const weatherData = await response.json();
         console.log(weatherData);
         const {name} = weatherData;
         const{feels_like} = weatherData.main;
-        const{id, main} = weather.Data.weather[0];
+        const{id, main} = weatherData.weather[0];
         loc.textContent=name;
         climate.textContent=main;
         tempvalue.textContent=Math.round(feels_like-273);
@@ -45,10 +45,7 @@ const getWeather = async(city)=>{
         else if(id==800){
             tempicon.src="./img/sun.png"
         }
-    }
-    catch(error){
-        console.log("error")
-    }
+    
 };
 
 
