@@ -7,7 +7,49 @@ let iconfile;
 
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
+const proxy = "cors-anywhere.herokuapp.com/";
 
+searchButton.addEventListener('click', (e)=>{
+    e.preventDefault();
+    getWeather(searchInput.value);
+    searchInput.value='';
+});
+
+const getWeather = async(city)=>{
+    try{
+        const response = await fetch(`${proxy}api.openweathermap.org/data/2.5/weather?q=${city}&appid=db41dc252b16165c903f5a17d32fe192`);
+
+        const weatherData = await response.json();
+        console.log(weatherData);
+        const {name} = weatherData;
+        const{feels_like} = weatherData.main;
+        const{id, main} = weather.Data.weather[0];
+        loc.textContent=name;
+        climate.textContent=main;
+        tempvalue.textContent=Math.round(feels_like-273);
+        if(id<300&&id>200){
+            tempicon.src="./img/thunderstorm.png"
+        }
+        else if(id<400&&id>300){
+            tempicon.src="./img/clouds.png"
+        }
+        else if(id<600&&id>500){
+            tempicon.src="./img/rain.png"
+        }
+        else if(id<700&&id>600){
+            tempicon.src="./img/snow.png"
+        }
+        else if(id<700&&id>800){
+            tempicon.src="./img/clouds.png"
+        }
+        else if(id==800){
+            tempicon.src="./img/sun.png"
+        }
+    }
+    catch(error){
+        console.log("error")
+    }
+};
 
 
 window.addEventListener("load", () => {
@@ -18,8 +60,6 @@ window.addEventListener("load", () => {
         navigator.geolocation.getCurrentPosition((position)=>{
             long = position.coords.longitude;
             lat = position.coords.latitude;
-
-            const proxy = "https://cors-anywhere.herokuapp.com/";
 
             const api = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=db41dc252b16165c903f5a17d32fe192`
             console.log(api);
@@ -35,6 +75,25 @@ window.addEventListener("load", () => {
                 loc.textContent=name;
                 climate.textContent=main;
                 tempvalue.textContent=Math.round(feels_like-273);
+                if(id<300&&id>200){
+                    tempicon.src="./img/thunderstorm.png"
+                }
+                else if(id<400&&id>300){
+                    tempicon.src="./img/clouds.png"
+                }
+                else if(id<600&&id>500){
+                    tempicon.src="./img/rain.png"
+                }
+                else if(id<700&&id>600){
+                    tempicon.src="./img/snow.png"
+                }
+                else if(id<700&&id>800){
+                    tempicon.src="./img/clouds.png"
+                }
+                else if(id==800){
+                    tempicon.src="./img/sun.png"
+                }
+                
                 console.log(data);
             })
         })
