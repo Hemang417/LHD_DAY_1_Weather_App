@@ -1,1 +1,1 @@
-# LHD_DAY_2_Weather_App
+# LHD_DAY_1_Weather_App
